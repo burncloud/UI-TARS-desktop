@@ -19,6 +19,7 @@ import { ConfigOptions } from '../userTypes/index.js';
 import { AI21Handler } from './ai21.js';
 import { AnthropicHandler } from './anthropic.js';
 import { BaseHandler } from './base.js';
+import { BurncloudHandler } from './burncloud.js';
 
 import { GeminiHandler } from './gemini.js';
 import { GroqHandler } from './groq.js';
@@ -142,6 +143,16 @@ export const Handlers: Record<string, (opts: ConfigOptions) => any> = {
       models['azure-openai'].supportsToolCalls,
       models['azure-openai'].supportsN,
       models['azure-openai'].supportsStreaming,
+    ),
+  ['burncloud']: (opts: ConfigOptions) =>
+    new BurncloudHandler(
+      opts,
+      models.burncloud.models,
+      models.burncloud.supportsJSON,
+      models.burncloud.supportsImages,
+      models.burncloud.supportsToolCalls,
+      models.burncloud.supportsN,
+      models.burncloud.supportsStreaming,
     ),
 };
 
