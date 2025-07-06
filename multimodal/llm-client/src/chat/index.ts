@@ -24,6 +24,7 @@ export type GroqModel = (typeof models.groq.models)[number];
 export type OpenRouterModel = string;
 export type OpenAICompatibleModel = string;
 export type AzureOpenAIModel = string;
+export type BurncloudModel = (typeof models.burncloud.models)[number];
 
 export type LLMChatModel =
   | OpenAIModel
@@ -35,7 +36,8 @@ export type LLMChatModel =
   | PerplexityModel
   | GroqModel
   | OpenRouterModel
-  | OpenAICompatibleModel;
+  | OpenAICompatibleModel
+  | BurncloudModel;
 
 export type LLMProvider = keyof typeof models;
 
@@ -51,6 +53,7 @@ type ProviderModelMap = {
   openrouter: OpenRouterModel;
   'openai-compatible': OpenAICompatibleModel;
   'azure-openai': AzureOpenAIModel;
+  burncloud: BurncloudModel;
 };
 
 type CompletionBase<P extends LLMProvider> = Pick<
